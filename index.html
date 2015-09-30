@@ -59,7 +59,7 @@
 					});
 					// Add center marker
 					feature.marker = new google.mapsMarker({
-						position: geo.get(),
+						position: new google.maps.LatLng(geo.get()),
 						map: map,
 						icon: "http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5",
 					})
