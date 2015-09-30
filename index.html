@@ -1,12 +1,66 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Leaflet GeoJSON Example</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-</head>
-<body>
-	<script src="https://embed.github.com/view/geojson/HaydenElza/heterobasidion/gh-pages/sites_2012.geojson"></script>
-</body>
+<html lang="en">
+	<head>
+		<link rel="shortcut icon" href="./img/favicon.png" type="image/png">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			#map {
+				width: 100%;
+				height: 0;
+				padding: 35%;
+			}
+			#footer {
+				text-align: center;
+				position: absolute;
+				bottom: 10px;
+				width: 100%;
+			}
+		</style>
+
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&sensor=true"></script>
+
+		<script>
+			var map;
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 4,
+					center: {lat: -28, lng: 137}
+				});
+
+				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
+				map.data.loadGeoJson("https://raw.githubusercontent.com/HaydenElza/heterobasidion/gh-pages/sites_2012.geojson");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Heterobasidion Root Disease <small>in Wisconsin</small></h1>
+		</div>
+		<div class="container">
+			<div class="header">
+				<h3 class="text-muted">Confirmed locations 2012 (Approximate)</h3>
+			</div>
+			<hr/>
+			<div id="map"></div>
+		</div>
+		<br><br><br>
+		<div class="container">
+			<div class="header">
+				<h3 class="text-muted">Confirmed locations 2012 (Approximate)</h3>
+			</div>
+			<hr/>
+			<div id="map"></div>
+		</div>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-63988500-3', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
 </html>
