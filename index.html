@@ -32,9 +32,21 @@
 		<script>
 			var url = "./sites_2012.geojson"
 			function initMap() {
+				// Set the stroke width, and fill color for each polygon
+				var circle = {
+					path: 'cx="64" cy="40" r="24"',
+					strokeColor: '#FF0000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					radius: 10000000
+				};
+				
 				var map = new google.maps.Map(
 					// Add a Google Map
 					document.getElementById('map'), {
+						icon: circle;
 						center: {lat: 44.5, lng: -89.5},
 						zoom: 7,
 						mapTypeId: 'satellite'
@@ -43,40 +55,6 @@
 
 				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
 				map.data.loadGeoJson(url);
-				var marker, i, center;
-					for (i = 0; i < locations.length; i++) {
-						center = new google.maps.LatLng(locations[i][1], locations[i][2]);
-						marker = new google.maps.Marker({
-							position: center,
-							map: map
-						});
-						var circle = new google.maps.Circle({
-							center: center,
-							map:map,
-							radus:160930,
-							strokeColor: "red",
-							strokeOpacity:0.8,
-							strokeWeight: 2,
-							fillColor: "red"
-						});
-						circle.bindTo('center',marker,'position');
-							google.maps.event.addListener(marker, 'click', (function(marker, i) {
-								return function() {
-									infowindow.setContent(locations[i][0]);
-									infowindow.open(map, marker);
-									
-								};
-							})(marker, i));
-					}
-				// Set the stroke width, and fill color for each polygon
-				map.data.setStyle({
-					strokeColor: '#FF0000',
-					strokeOpacity: 0.8,
-					strokeWeight: 2,
-					fillColor: '#FF0000',
-					fillOpacity: 0.35,
-					radius: 10000000
-				});
 			}
 		</script>
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&callback=initMap"></script>
