@@ -16,25 +16,6 @@
 				width: 100%;
 			}
 		</style>
-
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&sensor=true"></script>
-
-		<script>
-			var url = "./sites_2012.geojson"
-			function initMap(url) {
-				var googleMap = new google.maps.Map(
-					// Add a Google Map
-					document.getElementById('map'), {
-						center: {lat: 0, lng: 0},
-						zoom: 2,
-						mapTypeId: 'satellite'
-					}
-				);
-
-				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
-				googleMap.data.loadGeoJson(url);
-			}
-		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -45,10 +26,26 @@
 				<h3 class="text-muted">Confirmed locations 2012 (Approximate)</h3>
 			</div>
 			<hr/>
-			<div id="googleMap"></div>
+			<div id="map"></div>
 		</div>
 		<br><br><br>
+		<script>
+			var url = "./sites_2012.geojson"
+			function initMap() {
+				var googleMap = new google.maps.Map(
+					// Add a Google Map
+					document.getElementById('map'), {
+						center: {lat: 44.5, lng: -89.5},
+						zoom: 7,
+						mapTypeId: 'satellite'
+					}
+				);
 
+				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
+				googleMap.data.loadGeoJson(url);
+			}
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&callback=initMap"></script>
 		<!--<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
