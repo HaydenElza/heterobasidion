@@ -41,14 +41,14 @@
 					}
 				);
 
-				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
+				// Load data
 				map.data.loadGeoJson(url);
 				
 				map.data.setStyle(function(feature) {  
 					var geo = feature.getGeometry();
-					feature.circle=new google.maps.Circle({
-						map:map,
-						icon: "http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5",
+					// Add circle
+					feature.circle = new google.maps.Circle({
+						map: map,
 						center: geo.get(),
 						radius: 2000,
 						strokeColor: '#FF0000',
@@ -57,8 +57,13 @@
 						fillColor: '#FF0000',
 						fillOpacity: 0,
 					});
-					//and hide the marker when you want to
-					//return {visible:false};
+					// Add center marker
+					feature.marker = new. google.mapsMarker({
+						map: map,
+						icon: "http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5",
+					})
+					// And hide the marker
+					return {visible:false};
 				});
 			}
 		</script>
