@@ -30,39 +30,41 @@
 		</div>
 		<br><br><br>
 		<script>
-			var url = "./sites_2012.geojson"
+			var url = "http://elza.me/heterobasidion/sites_2012.geojson"
 			function initMap() {
 				var map = new google.maps.Map(
 					// Add a Google Map
 					document.getElementById('map'), {
 						center: {lat: 44.5, lng: -89.5},
 						zoom: 7,
-						mapTypeId: 'satellite'
+						maxZoom: 12
 					}
 				);
 
 				// Load data
 				map.data.loadGeoJson(url);
 				
-				map.data.setStyle(function(feature) {  
+				map.data.setStyle({
+					icon: "http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5"
+				});
+
+				/*map.data.setStyle(function(feature) {  
 					var geo = feature.getGeometry();
 					// Add circle
 					feature.circle = new google.maps.Circle({
 						map: map,
 						center: geo.get(),
-						radius: 2000,
+						radius: 200,
 						strokeColor: '#FF0000',
-						strokeOpacity: 0.2,
+						strokeOpacity: 0.8,
 						strokeWeight: 2,
 						fillColor: '#FF0000',
 						fillOpacity: 0,
 					});
-					// Add center marker
-					//return {icon:feature.getProperty("http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5")};
 					// And hide the marker
 					return {visible:false};
-				});
-			}
+				});*/
+			};
 		</script>
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&callback=initMap"></script>
 		<!--<script>
