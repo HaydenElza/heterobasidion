@@ -43,6 +43,15 @@
 
 				// NOTE: This uses cross-domain XHR, and may not work on older browsers.
 				googleMap.data.loadGeoJson(url);
+				// Set the stroke width, and fill color for each polygon
+				map.data.setStyle({
+					strokeColor: '#FF0000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					radius: 10000000;
+				});
 			}
 		</script>
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8GI3EGL1b-KyIa-2Vt7BzmKlVvtNZJf8&callback=initMap"></script>
