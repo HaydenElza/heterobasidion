@@ -4,6 +4,10 @@
 		<!--<link rel="shortcut icon" href="./img/favicon.png" type="image/png">-->
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		<style>
+			#title {
+				text-align: center;
+				font-size: 4em;
+			}
 			#map {
 				width: 100%;
 				height: 0;
@@ -19,15 +23,22 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Heterobasidion Root Disease <small>in Wisconsin</small></h1>
+			<h1 id="title">Heterobasidion Root Disease in Wisconsin</h1>
 		</div>
 		<div class="container">
-			<div class="header">
-				<h3 class="text-muted">Confirmed locations 2012 (Approximate)</h3>
+			<div class="row">
+				<div class="col-md-4 col-lg-4">
+					<h2>History: Discovery and Spread</h2>
+					<p>Heterobasidion root disease has been an economic problem in the southern United States since the 1940s. It wasn't until 1993 that it was discovered in a pine plantation in Wisconsin and has since been found in 23 counties in the state.</p>
+				</div>
+				<div class="col-md-8 col-lg-8">
+					<div class="header">
+						<h3 class="text-muted">Confirmed Sites 2012 (Approximate Location)</h3>
+					</div>
+					<div id="map"></div>
+				</div>
 			</div>
-			<hr/>
-			<div id="map"></div>
-		</div>
+		</div
 		<br><br><br>
 		<script>
 			var url = "http://elza.me/heterobasidion/sites_2012.geojson"
@@ -45,7 +56,7 @@
 				map.data.loadGeoJson(url);
 				
 				map.data.setStyle({
-					icon: "http://mt.google.com/vt/icon/name=icons/spotlight/directions_decision_point_hover_medium.png&scale=1.5"
+					icon: "http://mt.google.com/vt/icon/name=icons/spotlight/measle_8px.png&scale=2"
 				});
 
 				/*map.data.setStyle(function(feature) {  
